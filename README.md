@@ -84,19 +84,6 @@ $authorizationUrl = $provider->getAuthorizationUrl($options);
 ```
 If neither are defined, the provider will utilize internal defaults.
 
-At the time of authoring this documentation, the [following scopes are available](https://developers.craft.com/docs/methods/oauth2/initiate-oauth-integration#scopes).
-
-- contacts
-- content
-- reports
-- social
-- automation
-- timeline
-- forms
-- files
-- hubdb
-- transactional-email
-
 ## Testing
 
 ``` bash
