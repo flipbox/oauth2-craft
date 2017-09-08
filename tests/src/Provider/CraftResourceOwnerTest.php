@@ -43,7 +43,7 @@ class CraftResourceOwnerTest extends \PHPUnit_Framework_TestCase
                 'content',
                 'oauth'
             ],
-            'expires_in' => rand(6, 10),
+            'expires' => rand(6, 10),
             'id' => rand(6, 10),
             'token_type' => 'access'
         ];
@@ -53,6 +53,6 @@ class CraftResourceOwnerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($response['email'], $user->getEmail());
         $this->assertEquals($response['id'], $user->getId());
         $this->assertEquals($response['scopes'], $user->getScopes());
-        $this->assertEquals($response['expires_in'], $user->getExpires());
+        $this->assertEquals($response['expires'], $user->getExpires());
     }
 }
