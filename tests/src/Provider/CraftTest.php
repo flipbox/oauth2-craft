@@ -110,16 +110,13 @@ class CraftTest extends \PHPUnit_Framework_TestCase
         $token = $this->provider->getAccessToken('authorization_code', ['code' => 'mock_authorization_code']);
         $user = $this->provider->getResourceOwner($token);
 
-        $this->assertEquals($params['hub_id'], $user->getHubId());
-        $this->assertEquals($params['hub_id'], $user->toArray()['hub_id']);
+
         $this->assertEquals($params['id'], $user->getId());
         $this->assertEquals($params['id'], $user->toArray()['id']);
-        $this->assertEquals($params['app_id'], $user->getAppId());
-        $this->assertEquals($params['app_id'], $user->toArray()['app_id']);
-        $this->assertEquals($params['hub_domain'], $user->getDomain());
-        $this->assertEquals($params['hub_domain'], $user->toArray()['hub_domain']);
-        $this->assertEquals($params['user'], $user->getEmail());
-        $this->assertEquals($params['user'], $user->toArray()['user']);
+        $this->assertEquals($params['domain'], $user->getDomain());
+        $this->assertEquals($params['domain'], $user->toArray()['domain']);
+        $this->assertEquals($params['email'], $user->getEmail());
+        $this->assertEquals($params['email'], $user->toArray()['email']);
     }
 
     /**
