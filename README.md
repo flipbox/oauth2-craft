@@ -24,6 +24,8 @@ Usage is the same as The League's OAuth client, using `\Flipbox\OAuth2\Client\Pr
 
 ```php
 $provider = new Flipbox\OAuth2\Client\Provider\Craft([
+    'domain'            => 'https://yourdomain.com',
+    'apidomain'         => 'https://api.yourdomain.com',
     'clientId'          => '{craft-client-id}',
     'clientSecret'      => '{craft-client-secret}',
     'redirectUri'       => 'https://example.com/callback-url',
