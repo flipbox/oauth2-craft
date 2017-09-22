@@ -92,13 +92,13 @@ class GuardianTest extends \PHPUnit_Framework_TestCase
         ];
 
         $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
-        $postResponse->shouldReceive('getBody')->andReturn('access_token=mock_access_token&expires=3600&refresh_token=mock_refresh_token&otherKey={1234}');
-        $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'application/x-www-form-urlencoded']);
+        $postResponse->shouldReceive('getBody')->andReturn('{"access_token":"mock_access_token","expires":3600,"refresh_token":"mock_refresh_token","otherKey":"1234"}');
+        $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'application/json']);
         $postResponse->shouldReceive('getStatusCode')->andReturn(200);
 
         $userResponse = m::mock('Psr\Http\Message\ResponseInterface');
         $userResponse->shouldReceive('getBody')->andReturn(json_encode($params));
-        $userResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
+        $userResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'application/json']);
         $userResponse->shouldReceive('getStatusCode')->andReturn(200);
 
         $client = m::mock('GuzzleHttp\ClientInterface');
