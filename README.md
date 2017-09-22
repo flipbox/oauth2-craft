@@ -23,7 +23,7 @@ Usage is the same as The League's OAuth client, using `\Flipbox\OAuth2\Client\Pr
 ### Authorization Code Flow
 
 ```php
-$provider = new Flipbox\OAuth2\Client\Provider\Craft([
+$provider = new Flipbox\OAuth2\Client\Provider\Guardian([
     'domain'            => 'https://yourdomain.com',
     'apidomain'         => 'https://api.yourdomain.com',
     'clientId'          => '{craft-client-id}',
