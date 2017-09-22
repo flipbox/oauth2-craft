@@ -2,95 +2,104 @@
 
 namespace Flipbox\OAuth2\Client\Provider;
 
-use Flipbox\OAuth2\Client\Provider\Exception\GuardianIdentityProviderException;
-use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Token\AccessToken;
-use League\OAuth2\Client\Tool\BearerAuthorizationTrait;
-use Psr\Http\Message\ResponseInterface;
 
-abstract class Guardian extends AbstractProvider
+class Guardian extends AbstractGuardian
 {
-    use BearerAuthorizationTrait;
-
     /**
-     * @inheritdoc
-     */
-    protected function getScopeSeparator()
-    {
-        return ' ';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function getAuthorizationParameters(array $options)
-    {
-        return array_merge(
-            parent::getAuthorizationParameters($options),
-            [
-                'client_secret' => $this->clientSecret
-            ]
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function getDefaultHeaders()
-    {
-        return [
-            'accept' => 'application/json'
-        ];
-    }
-
-    /**
-     * Returns the request body for requesting an access token.
+     * Domain
      *
-     * @param  array $params
+     * @var string
+     */
+    public $domain = 'https://www.yourdomain.com';
+
+    /**
+     * Api domain
+     *
+     * @var string
+     */
+    public $apiDomain = 'https://api.yourdomain.com';
+
+    /**
+     * Access token URI
+     *
+     * @var string
+     */
+    public $authorizationUri = '/oauth/authorize';
+
+    /**
+     * Access token URI
+     *
+     * @var string
+     */
+    public $accessTokenUri = '/oauth/v1/token';
+
+    /**
+     * Access token URI
+     *
+     * @var string
+     */
+    public $resourceOwnerDetailsUri = '/oauth/v1/access-tokens';
+
+    /**
+     * @var array
+     */
+    protected $defaultScopes = [];
+
+    /**
+     * @inheritdoc
+     */
+    public function getBaseAuthorizationUrl()
+    {
+        return $this->getDomain() . '/' . $this->cleanUri($this->authorizationUri);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getBaseAccessTokenUrl(array $params)
+    {
+        return $this->getApiDomain() . '/' . $this->cleanUri($this->accessTokenUri);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getResourceOwnerDetailsUrl(AccessToken $token)
+    {
+        return $this->getApiDomain() . '/' . $this->cleanUri($this->resourceOwnerDetailsUri) . '/' . $token->getToken();
+    }
+
+    /**
      * @return string
      */
-    protected function getAccessTokenBody(array $params)
+    protected function getDomain()
     {
-        return json_encode(array_filter($params));
+        return $this->domain;
     }
 
     /**
-     * Builds request options used for requesting an access token.
-     *
-     * @param  array $params
-     * @return array
+     * @return string
      */
-    protected function getAccessTokenOptions(array $params)
+    protected function getApiDomain()
     {
-        $option = array_merge(
-            parent::getAccessTokenOptions($params),
-            [
-                'headers' => [
-                    'content-type' => 'application/json'
-                ]
-            ]
-        );
-
-        return $option;
+        return $this->apiDomain;
     }
 
     /**
      * @inheritdoc
      */
-    protected function checkResponse(ResponseInterface $response, $data)
+    protected function getDefaultScopes()
     {
-        if ($response->getStatusCode() >= 400) {
-            throw GuardianIdentityProviderException::clientException($response, $data);
-        } elseif (isset($data['error'])) {
-            throw GuardianIdentityProviderException::oauthException($response, $data);
-        }
+        return $this->defaultScopes;
     }
 
     /**
-     * @inheritdoc
+     * @param $uri
+     * @return string
      */
-    protected function createResourceOwner(array $response, AccessToken $token)
+    protected function cleanUri($uri)
     {
-        return new GuardianResourceOwner($response);
+        return trim($uri, '/');
     }
 }

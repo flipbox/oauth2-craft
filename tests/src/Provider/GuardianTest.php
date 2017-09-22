@@ -1,17 +1,17 @@
 <?php namespace Flipbox\OAuth2\Client\Test\Provider;
 
-use Flipbox\OAuth2\Client\Provider\Craft;
+use Flipbox\OAuth2\Client\Provider\Guardian;
 use Mockery as m;
 
 class GuardianTest extends \PHPUnit_Framework_TestCase
 {
 
-    /** @var Craft */
+    /** @var Guardian */
     protected $provider;
 
     protected function setUp()
     {
-        $this->provider = new Craft([
+        $this->provider = new Guardian([
             'clientId' => 'mock_client_id',
             'clientSecret' => 'mock_secret',
             'redirectUri' => 'none',
