@@ -1,6 +1,6 @@
 {
-    "name": "flipboxdigital/oauth2-craft",
-    "description": "Craft CMS OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
+    "name": "flipboxdigital/oauth2-guardian",
+    "description": "Craft CMS / Guardian OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
     "version": "1.0.0",
     "license": "MIT",
     "keywords": [

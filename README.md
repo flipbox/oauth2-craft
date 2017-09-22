@@ -1,4 +1,4 @@
-# Craft Provider for OAuth 2.0 Client
+# Craft CMS / Guardian Provider for OAuth 2.0 Client
 [![Latest Version](https://img.shields.io/github/release/flipbox/oauth2-craft.svg?style=flat-square)](https://github.com/flipbox/oauth2-craft/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/flipbox/oauth2-craft/master.svg?style=flat-square)](https://travis-ci.org/flipbox/oauth2-craft)
@@ -6,7 +6,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/flipbox/oauth2-craft.svg?style=flat-square)](https://scrutinizer-ci.com/g/flipbox/oauth2-craft)
 [![Total Downloads](https://img.shields.io/packagist/dt/flipboxdigital/oauth2-craft.svg?style=flat-square)](https://packagist.org/packages/flipboxdigital/oauth2-craft)
 
-This package provides Craft OAuth 2.0 support for the PHP League's [OAuth 2.0 Client](https://github.com/flipbox/oauth2-client).
+This package provides Craft OAuth 2.0 support for [Guardian](https://github.com/flipbox/guardian) and the PHP League's [OAuth 2.0 Client](https://github.com/flipbox/oauth2-client).
 
 ## Installation
 

@@ -1,12 +1,12 @@
 <?php namespace League\OAuth2\Client\Test\Provider;
 
-use Flipbox\OAuth2\Client\Provider\CraftResourceOwner;
+use Flipbox\OAuth2\Client\Provider\GuardianResourceOwner;
 
-class CraftResourceOwnerTest extends \PHPUnit_Framework_TestCase
+class GuardianResourceOwnerTest extends \PHPUnit_Framework_TestCase
 {
     public function testEmailIsNullWithoutResponse()
     {
-        $user = new CraftResourceOwner;
+        $user = new GuardianResourceOwner;
 
         $value = $user->getEmail();
 
@@ -15,7 +15,7 @@ class CraftResourceOwnerTest extends \PHPUnit_Framework_TestCase
 
     public function testIdIsNullWithoutResponse()
     {
-        $user = new CraftResourceOwner;
+        $user = new GuardianResourceOwner;
 
         $value = $user->getId();
 
@@ -25,7 +25,7 @@ class CraftResourceOwnerTest extends \PHPUnit_Framework_TestCase
 
     public function testDomainIsNullWithoutResponse()
     {
-        $user = new CraftResourceOwner;
+        $user = new GuardianResourceOwner;
 
         $value = $user->getDomain();
 
@@ -47,7 +47,7 @@ class CraftResourceOwnerTest extends \PHPUnit_Framework_TestCase
             'id' => rand(6, 10),
             'token_type' => 'access'
         ];
-        $user = new CraftResourceOwner($response);
+        $user = new GuardianResourceOwner($response);
 
         $this->assertEquals($response['domain'], $user->getDomain());
         $this->assertEquals($response['email'], $user->getEmail());

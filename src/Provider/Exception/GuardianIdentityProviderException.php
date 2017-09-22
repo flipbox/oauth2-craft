@@ -5,7 +5,7 @@ namespace Flipbox\OAuth2\Client\Provider\Exception;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Psr\Http\Message\ResponseInterface;
 
-class CraftIdentityProviderException extends IdentityProviderException
+class GuardianIdentityProviderException extends IdentityProviderException
 {
     /**
      * Creates client exception from response.

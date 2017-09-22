@@ -3,7 +3,7 @@
 use Flipbox\OAuth2\Client\Provider\Craft;
 use Mockery as m;
 
-class CraftTest extends \PHPUnit_Framework_TestCase
+class GuardianTest extends \PHPUnit_Framework_TestCase
 {
 
     /** @var Craft */

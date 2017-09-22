@@ -3,7 +3,7 @@
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use League\OAuth2\Client\Tool\ArrayAccessorTrait;
 
-class CraftResourceOwner implements ResourceOwnerInterface
+class GuardianResourceOwner implements ResourceOwnerInterface
 {
     use ArrayAccessorTrait;
 
