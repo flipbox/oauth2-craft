@@ -1,5 +1,8 @@
 Changelog
 =========
+## 1.1.0 - 2017-12-14
+### Changed
+- Using straight forward property assignment for endpoints, etc.
 
 ## 1.0.0 - 2017-09-22
 
